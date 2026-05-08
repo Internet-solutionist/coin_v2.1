@@ -1,8 +1,11 @@
 import asyncio
-from core.llm import get_llm_response
-from prompts import load_prompt
+from core.llm import call_llm
+from prompts.ceo import get_prompt
 
 async def decide(state: dict):
-    prompt = load_prompt('ceo.txt')
-    response = await get_llm_response(prompt, str(state))
-    return response
+    prompt = get_prompt(state)
+    response = await call_llm(prompt)
+    # Parse decision
+    return {'decision': response, 'timestamp': 'now'}
+
+print('CEO Agent loaded - Sovereign CoIn Trading Firm')
