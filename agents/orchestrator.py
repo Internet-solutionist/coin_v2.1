@@ -1,14 +1,13 @@
-import asyncio
-from agents import ceo, research, backtesting, risk_management, execution, cost_optimizer
-
-class Orchestrator:
-    async def cycle(self, ticker: str, capital: float = 100000):
-        state = {'ticker': ticker, 'capital': capital}
-        state = await research.analyze(state)
-        state = await backtesting.validate(state)
-        state = await risk_management.evaluate(state)
-        state = await ceo.decide(state)
-        print(f'Full 6-agent cycle completed for {ticker}')
-        return state
-
-print('Orchestrator ready - 6-Agent CoIn Firm')
+async def run_cycle(ticker: str, capital: float = 100000):
+    print(f'\n=== CoIn 6-Agent Diagnostic Cycle Started for {ticker} ===')
+    # Simulate full cycle
+    state = {'ticker': ticker, 'capital': capital}
+    # Call all agents
+    state = await research.analyze(state)
+    state = await backtesting.validate(state)
+    state = await risk_management.evaluate(state)
+    state = await ceo.decide(state)
+    state = await execution.prepare(state)
+    state = await cost_optimizer.optimize(state)
+    print('=== Cycle Complete ===')
+    return state
