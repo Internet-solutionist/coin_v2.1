@@ -5,7 +5,8 @@ yfinance
 pandas
 numpy
 scikit-learn
-rich
+langchain
+langchain-community
+ollama
 pydantic
 httpx
-asyncio
