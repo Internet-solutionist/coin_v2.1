@@ -1,8 +1,15 @@
 import asyncio
-from core.llm import get_llm_response
+from typing import Dict
+
+from core.llm import call_llm
 from prompts import load_prompt
 
-async def optimize(state: dict):
-    prompt = load_prompt('cost_optimizer.txt')
-    response = await get_llm_response(prompt, str(state))
-    return response
+class CostOptimizerAgent:
+    async def optimize(self, state: Dict) -> Dict:
+        prompt = load_prompt('cost_optimizer.txt')
+        user_message = "Review the full cycle and optimize costs and efficiency."
+        response = await call_llm(prompt, user_message)
+        state['final_recommendation'] = response
+        return state
+
+cost_optimizer = CostOptimizerAgent()

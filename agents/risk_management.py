@@ -1,8 +1,17 @@
 import asyncio
-from core.llm import get_llm_response
-from prompts import load_prompt
+from typing import Dict
 
-async def evaluate(state: dict):
-    prompt = load_prompt('risk_management.txt')
-    response = await get_llm_response(prompt, str(state))
-    return response
+from core.llm import call_llm
+from prompts import load_prompt
+from core.risk import assess_risk
+
+class RiskManagementAgent:
+    async def evaluate(self, state: Dict) -> Dict:
+        prompt = load_prompt('risk_management.txt')
+        risk_data = assess_risk(state.get('ticker'))
+        user_message = f"Risk assessment data: {risk_data}"
+        response = await call_llm(prompt, user_message)
+        state['risk_assessment'] = response
+        return state
+
+risk_management = RiskManagementAgent()
