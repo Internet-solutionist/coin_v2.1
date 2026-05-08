@@ -2,7 +2,7 @@
 
 Sovereign 6-Agent AI Trading Firm
 
-We do not predict the market. We insure against it.
+**We do not predict the market. We insure against it.**
 
 ## Quick Start
 
@@ -15,4 +15,6 @@ docker compose up --build
 
 Open http://localhost:8000/docs
 
-The 6 agents will run full diagnostic cycles.
+POST to /cycle with {"ticker": "BTC-USD", "capital": 100000}
+
+Built as sovereign AI Trading Firm with local capable models (Ollama).

@@ -1,12 +1,10 @@
 fastapi
 uvicorn
-python-dotenv
+pydantic
 yfinance
 pandas
 numpy
-scikit-learn
-langchain
-langchain-community
+python-dotenv
 ollama
-pydantic
-httpx
+rich
+loguru
