@@ -1,6 +1,6 @@
 # coin_v2.1 - CoIn Counter Insurance
 
-**Sovereign 6-Agent AI Trading Firm**
+Sovereign 6-Agent AI Trading Firm
 
 We do not predict the market. We insure against it.
 
@@ -13,6 +13,6 @@ cp .env.example .env
 docker compose up --build
 ```
 
-Open http://localhost:8000/docs to test the full 6-agent cycle.
+Open http://localhost:8000/docs
 
-**Philosophy**: Defensive, mathematically rigorous, philosophically honest trading.
+The 6 agents will run full diagnostic cycles.
